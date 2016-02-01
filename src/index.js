@@ -55,4 +55,4 @@ function render(state) {
   reactRender(<App dispatch={dispatch} {...state} />, document.querySelector('#app'))
 }
 
-render(initialState)
+render(state)
