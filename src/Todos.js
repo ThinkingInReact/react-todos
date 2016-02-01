@@ -17,9 +17,9 @@ class Todos extends React.Component {
 
     todos.map(function(todo) {
       if (this.props.editing.id == todo.id) {
-        rows.push(<Todo key={todo.id} todo={todo} editing={this.props.editing} />);
+        rows.push(<Todo dispatch={this.props.dispatch} key={todo.id} todo={todo} editing={this.props.editing} />);
       } else {
-        rows.push(<Todo key={todo.id} todo={todo} />);
+        rows.push(<Todo dispatch={this.props.dispatch} key={todo.id} todo={todo} />);
       }
     }, this);
 

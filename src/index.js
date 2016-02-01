@@ -4,8 +4,9 @@ import {render as reactRender} from 'react-dom'
 import App from './App'
 import initialState from './state'
 
+let state = handler(initialState, {});
 function dispatch(action) {
-  let state = handler(action);
+  state = handler(state, action);
   render(state);
 }
 
@@ -51,7 +52,7 @@ function handler(state = initialState, action) {
 }
 
 function render(state) {
-  reactRender(<App {...state} />, document.querySelector('#app'))
+  reactRender(<App dispatch={dispatch} {...state} />, document.querySelector('#app'))
 }
 
 render(initialState)
