@@ -1,10 +1,23 @@
+import './styles/App.css'
 import React from 'react'
-import "./styles/App.css"
+import Header from './Header'
+import Todos from './Todos'
+import Footer from './Footer'
 
 export default React.createClass({
   render() {
-    return <div>
-      <h2>Welcome to React</h2>
-    </div>
+    return (
+      <div className="todoapp">
+        <Header {...this.props} />
+        <section className="main">
+          <input
+            className="toggle-all"
+            type="checkbox"
+          />
+        <Todos {...this.props} />
+        </section>
+        <Footer {...this.props} />
+      </div>
+    )
   }
 })
