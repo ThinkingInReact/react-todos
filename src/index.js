@@ -4,10 +4,20 @@ import {render as reactRender} from 'react-dom'
 import App from './App'
 import initialState from './state'
 
-let state = handler(initialState, {});
+let state = localStorage.getItem('state'); // Read state from localStorage
+
+// Check if anything was in localStorage, if so JSON.parse it. If not, just default to initialState
+if(!state) {
+  state = initialState;
+} else {
+  state = JSON.parse(state);
+}
+
+state = handler(state, {}); // Initialize the state
 function dispatch(action) {
   state = handler(state, action);
   render(state);
+  localStorage.setItem('state', JSON.stringify(state));
 }
 
 function handler(state = initialState, action) {
@@ -55,4 +65,4 @@ function render(state) {
   reactRender(<App dispatch={dispatch} {...state} />, document.querySelector('#app'))
 }
 
-render(initialState)
+render(state)
