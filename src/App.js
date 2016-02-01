@@ -4,7 +4,7 @@ import Header from './Header'
 import Todos from './Todos'
 import Footer from './Footer'
 
-export default React.createClass({
+class App extends React.Component {
   render() {
     return (
       <div className="todoapp">
@@ -20,4 +20,6 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
+
+export default App;
